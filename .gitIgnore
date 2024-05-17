@@ -1,0 +1,26 @@
+node_modules# Archivos y directorios generados automáticamente
+node_modules/
+dist/
+build/
+tmp/
+.cache/
+
+# Archivos de configuración específicos del editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de compilación
+*.log
+*.bak
+*.tmp
+*.zip
+*.rar
+
+# Archivos de entorno local
+.env
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
