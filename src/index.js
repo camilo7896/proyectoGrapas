@@ -1,9 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import Tools from './models/tools.model.js';
-
+import Tools from './models/data.model.js';
+import dataRoute from './routes/data.route.js';
 const app = express();
+
+// Middlewares
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use("/api/data",dataRoute);
+
 
 // Conexión a la base de datos
 const connectDB = async () => {
@@ -18,58 +23,6 @@ const connectDB = async () => {
   }
 };
 connectDB();
-
-app.get('/api/tools', async (req, res) => {
-  try {
-    const tools = await Tools.find();
-    res.status(200).json(tools);
-  } catch (error) {
-    res.status(500).json({message:error.message})
-    console.log(error)
-  }
-})
-
-app.post('/api/tools',async(req,res)=>{
-  try {
-   const ToolsRegister= await Tools.create(req.body);
-   res.status(200).json(ToolsRegister);
-  } catch (error) {
-    res.status(500).json({message:error.message})
-    console.log(error)
-  }
-})
-
-app.get('/api/tools/:id', async (req, res) => { 
-  try {
-    const tools = await Tools.findById(req.params.id);
-    res.status(200).json(tools);
-  } catch (error) {
-    res.status(500).json({message:error.message})
-    console.log(error)
-  }
-})
-
-app.put('/api/tools/:id', async (req, res) => {
-  try {
-    const tools = await Tools.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json(tools);
-  } catch (error) {
-    res.status(500).json({message:error.message})
-    console.log(error)
-  }
-})
-
-app.delete('/api/tools/:id', async (req, res) => {
-  try {
-    const tools = await Tools.findByIdAndDelete(req.params.id);
-    res.status(200).json(tools);
-  } catch (error) {
-    res.status(500).json({message:error.message})
-    console.log(error)
-  }
-})
-
-
 
 
 // Puerto en el que el servidor va a escuchar
