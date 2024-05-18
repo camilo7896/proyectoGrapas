@@ -35,7 +35,7 @@ const connectDB = async () => {
 connectDB();
 
 
-// Puerto en el que el servidor va a escuchar
+// Puerto en el que el servidor va a
 const { PORT = 3000 } = process.env;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
