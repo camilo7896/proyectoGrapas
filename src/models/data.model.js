@@ -2,10 +2,13 @@ import mongoose from "mongoose";
 
 const ToolsSchema = mongoose.Schema(
     {
-        title:String,
-        name: String,
-        description: String,
-
+        operario:Number,
+        maquina:String,
+        hInicial: Number,
+        hFinal: Number,
+        referencia:String,
+        paradasMayores:String,
+        observaciones:String
     }
 )
 
